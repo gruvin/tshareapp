@@ -1,0 +1,71 @@
+#confirm-prize {
+    position: relative;
+    z-index: 0;
+    opacity: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#prize-labels > div {
+    position: relative;
+    text-align: center;
+    padding: 3px;
+    color: lightgrey;
+    font-weight: bold;
+}
+#prize-labels > div:nth-child(1) { top: 12%; color: chartreuse; }
+#prize-labels > div:nth-child(2) { top:  8%; font-weight: normal; }
+#prize-labels > div:nth-child(3) { top: 25%; color: yellow; }
+
+#prizes {
+    position: relative;
+    padding-bottom: 33%;
+    margin-bottom: 3rem;
+    // border: 1px dashed yellow;
+    border-bottom: 8px grey solid;
+}
+#prizes > div {
+    position: absolute;
+    left: 0;
+    bottom: 32px;
+    font-size: 2.75rem;
+    // border: 2px dashed lightblue;
+}
+#prizes > div:nth-child(1) { left:  -20%; }
+#prizes > div:nth-child(2) { left:   22%; }
+#prizes > div:nth-child(3) { left:   65%; }
+#prizes > div > div {
+    position: relative;
+    transform-origin: bottom center;
+    filter: saturate(0) brightness(0.7);
+    z-index: 100;
+    // border: 1px dashed yellow;
+}
+#prizes > div:nth-child(1) > div:first-child { transform: scale(0.50); }
+#prizes > div:nth-child(2) > div:first-child { transform: scale(0.60); }
+#prizes > div:nth-child(3) > div:first-child { transform: scale(0.85); }
+#prizes > div > div > span {
+    position: absolute;
+    left: 50%; top: 27%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    text-shadow: 3px 3px 5px #333;
+    color:lightgreen;
+    visibility: hidden;
+    // border: 1px red solid;
+}
+#prizes > div > div:last-child {
+    position: absolute;
+    left: 50%; bottom: -55px;
+    transform-origin: center;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 32px;
+    color: yellow;
+    background-color: black;
+    border: 3px solid yellow;
+    border-radius: 40px;
+}

@@ -1,0 +1,56 @@
+ol {
+    margin: 1.2em 0 1.25em 1.6em;
+    max-width: 350px;
+    counter-reset: my-awesome-counter;
+    list-style: none;
+    padding-left: 40px;
+    color:#999;
+    font-size: 1.1rem;
+    line-height: 1.4rem;
+}
+ol li {
+    margin: 0 0 2rem 0;
+    counter-increment: bullet-counter;
+    position: relative;
+}
+ol li::before {
+    content: ""; // counter(bullet-counter);
+    color: #bdbdbd;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    position: absolute;
+    --size: 48px;
+    left: calc(-1 * var(--size));
+    top: -13px;
+    line-height: calc(var(--size) - 5px);
+    width: calc(var(--size));
+    height: var(--size);
+    transform: rotate(0);
+    background-image: url('/assets/green-check.png');
+    background-position: 0.1em 0.2em;
+    background-size: 2em;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+
+ol li.false::before {
+    background-image: url('/assets/red-x.png');
+    background-size: 1em;
+}
+ol li.blue::before      { background-image: url('/assets/achieve-blue.png'); }
+ol li.crimson::before   { background-image: url('/assets/achieve-crimson.png'); }
+ol li.cyan::before      { background-image: url('/assets/achieve-cyan.png'); }
+ol li.ethereum::before  { background-image: url('/assets/achieve-ethereum.png'); }
+ol li.eth-empty::before { background-image: url('/assets/achieve-eth-empty.png'); }
+ol li.green::before     { background-image: url('/assets/achieve-green.png'); }
+ol li.heart::before     { background-image: url('/assets/fluffy-heart_128x128.png'); background-size: 2.4em; background-position: -0.1em 0.2em; }
+ol li.hex::before       { background-image: url('/assets/intro-coin-lit.png'); }
+ol li.hex-empty::before { background-image: url('/assets/achieve-hex-empty.png'); }
+ol li.orange::before    { background-image: url('/assets/achieve-orange.png'); }
+ol li.pink::before      { background-image: url('/assets/achieve-pink.png'); }
+ol li.red::before       { background-image: url('/assets/achieve-red.png'); }
+ol li.teal::before      { background-image: url('/assets/achieve-teal.png'); }
+ol li.yellow::before    { background-image: url('/assets/achieve-yellow.png'); }
+
+.modal-header, .modal-content { text-align: center; margin:auto; }
