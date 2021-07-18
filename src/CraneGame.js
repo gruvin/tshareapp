@@ -326,7 +326,6 @@ class CraneGame extends React.Component {
                                 duration: 1,
                                 transform: `translate(${this.boxWidth*1.3}px, -150vh) scale(80)`, ease: 'power4.in'
                             })
-                            .set(".App", { overflowY: "auto" })
                             .then(() => {
                                 this.setState({ phase: STATES.WON })
                                 // this.parent.cookies.set('prize', this.craneAttachedTo.dataset.prize, { path: '/' })
