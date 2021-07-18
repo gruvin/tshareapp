@@ -33,6 +33,7 @@ class ConfirmPrize extends React.Component {
         const heartEl = this.prizeNodes[this.state.prize - 1].childNodes[0]
         const yearEl = this.prizeNodes[this.state.prize - 1].childNodes[1]
         gsap.timeline()
+            .set(".App", { overflowY: "hidden" })
             .set(heartEl, { filter: `saturate(1) brightness(1)`, zIndex: 9999 })
             .set(yearEl, { filter: `saturate(1) brightness(1)` })
             .to("#confirm-prize",{ duration: 0.3, opacity: 1 })
@@ -42,6 +43,7 @@ class ConfirmPrize extends React.Component {
                 ease: 'power4.out'
             }, "<")
             .set("#prizes > div > div > span", { visibility: "visible" })
+            .set(".App", { overflowY: "auto" })
     }
 
     render() {

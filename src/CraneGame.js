@@ -113,9 +113,59 @@ class CraneGame extends React.Component {
         setPos(this.introCoin)
         setPos(this.craneClaw)
 
+        document.addEventListener('keydown', this.handleKeys)
+        document.addEventListener('keyup', this.handleKeys)
+        document.addEventListener('focus', this.handleKeys)
+
         this.phase = STATES.INIT
         requestAnimationFrame(this.gameLoop)
     }
+
+    handleKeys = (e) => {
+        if (!this.keyAllowed || e.type === "focus") this.keyAllowed = { 38: true, 39: true, 32: true, 13: true }
+        if (this.state.phase !== STATES.PLAY) {
+            this.setState({
+                buttonUpPressed: false,
+                buttonDownPressed: false,
+                buttonDropPressed: false,
+            })
+            return
+        }
+        if (e.isComposing || e.keyCode === 229) return
+
+        let keyDown
+        if (e.type === "keydown") {
+            if (!this.keyAllowed[e.keyCode]) return;
+            this.keyAllowed[e.keyCode] = false;
+            keyDown = true
+            e.preventDefault()
+        } else {
+            keyDown = false
+            this.keyAllowed[e.keyCode] = true;
+        }
+
+        debug("keycode: ", e.keyCode)
+
+        switch (e.keyCode) {
+            case 38: // [cursor-up]
+                this.setState({ buttonUpPressed: keyDown })
+                break
+            case 39: // [cursor-down]
+                this.setState({ buttonRightPressed: keyDown })
+                break
+            case 13: // [enter]
+            case 32: // [space]
+                this.setState({ buttonDropPressed: true, phase: STATES.CRANEDROP })
+                break
+            default:
+                this.setState({
+                    buttonUpPressed: false,
+                    buttonDownPressed: false,
+                    buttonDropPressed: false,
+                })
+        }
+    }
+
 
     componentWillUnmount() {
         // window.clearInterval(this.gameLoopTimer)
@@ -270,11 +320,13 @@ class CraneGame extends React.Component {
                         this.craneAttachedTo.style.transform = `translate(0px, 0px) scale(${this.craneAttachedTo.scale / 0.7})`
                         this.craneClaw.style.zIndex = "10000"
                         gsap.timeline()
+                            .set(".App", { overflowY: "hidden" })
                             .delay(1)
                             .to(this.craneClaw, {
                                 duration: 1,
                                 transform: `translate(${this.boxWidth*1.3}px, -150vh) scale(80)`, ease: 'power4.in'
                             })
+                            .set(".App", { overflowY: "auto" })
                             .then(() => {
                                 this.setState({ phase: STATES.WON })
                                 // this.parent.cookies.set('prize', this.craneAttachedTo.dataset.prize, { path: '/' })
@@ -324,7 +376,14 @@ class CraneGame extends React.Component {
 
         const handleButtonUp = (e) => {
             e.preventDefault()
-            if (this.state.phase !== STATES.PLAY) return this.setState({ buttonUpPressed: false })
+            if (this.state.phase !== STATES.PLAY) {
+                this.setState({
+                    buttonUpPressed: false,
+                    buttonDownPressed: false,
+                    buttonDropPressed: false,
+                })
+                return
+            }
             switch (e.type) {
                 case "mousedown":
                 case "touchstart": this.setState({ buttonUpPressed: true }); break
@@ -334,7 +393,14 @@ class CraneGame extends React.Component {
 
         const handleButtonRight = (e) => {
             e.preventDefault()
-            if (this.state.phase !== STATES.PLAY) return this.setState({ buttonRightPressed: false })
+            if (this.state.phase !== STATES.PLAY) {
+                this.setState({
+                    buttonUpPressed: false,
+                    buttonDownPressed: false,
+                    buttonDropPressed: false,
+                })
+                return
+            }
             switch (e.type) {
                 case "mousedown":
                 case "touchstart":
@@ -345,7 +411,14 @@ class CraneGame extends React.Component {
 
         const handleButtonDrop = (e) => {
             e.preventDefault()
-            if (this.state.phase !== STATES.PLAY) return this.setState({ buttonDropPressed: false })
+            if (this.state.phase !== STATES.PLAY) {
+                this.setState({
+                    buttonUpPressed: false,
+                    buttonDownPressed: false,
+                    buttonDropPressed: false,
+                })
+                return
+            }
             switch (e.type) {
                 case "mousedown":
                 case "touchstart":
