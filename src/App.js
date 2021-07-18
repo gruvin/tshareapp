@@ -137,7 +137,7 @@ class App extends React.Component {
                         {this.state.step === 2 && <ConfirmPrize parent={this} />}
                         {this.state.step === 3 && <MintPrize    parent={this} />}
 
-                        {localStorage && localStorage.getItem('debug') && 
+                        {uriQuery.has('debug') && 
                         <Container className="mt-3 p-3 text-center">
                             <Badge variant="secondary">{this.state.account}</Badge><br/>
                             <Badge variant="primary">{ethBalance} ETH</Badge>
