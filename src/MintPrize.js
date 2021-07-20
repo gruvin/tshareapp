@@ -338,7 +338,7 @@ class MintPrize extends React.Component {
                 </Container>
             }
         </Container>
-        {this.state.stakeConfirmed && <Container className="text-center">
+        <Container className="text-center">
             <Badge className="text-muted text-uppercase text-bold small">
                 <p className="my-0">pay your future self!</p>
             </Badge><br/>
@@ -351,7 +351,7 @@ class MintPrize extends React.Component {
             <Badge className="text-muted text-uppercase text-bold small">
                 <p className="m-0">the full experience</p>
             </Badge>
-        </Container>}
+        </Container>
         <Dialog ref={r => this.dialog = r} />
     </>)
     }

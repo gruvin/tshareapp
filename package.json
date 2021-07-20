@@ -91,8 +91,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "deploy": "rsync -rv --exclude='.*' --delete build/* gruvin:~/tshareapp/",
-    "deploy-live": "rsync -rv --exclude='.*' --delete build/* tsa:~/public_html/"
+    "deploy": "rsync -r --exclude='.*' --delete build/* gruvin:~/tshareapp/",
+    "deploy-live": "rsync -r --exclude='.*' --delete build/* tsa:~/public_html/"
   },
   "eslintConfig": {
     "extends": [
