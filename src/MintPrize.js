@@ -13,6 +13,7 @@ import HEX from './hex_contract'
 import BN from 'bignumber.js'
 import Dialog from 'react-bootstrap-dialog'
 import axios from 'axios'
+import { gsap } from "gsap"
 import imgBanner from './assets/achievements-trial.png'
 import imgBackArrow from './assets/mm-back-arrow.png'
 import imgMmBuyAni from './assets/mm-buy-ani.gif'
@@ -48,7 +49,7 @@ class MintPrize extends React.Component {
             msgDetail: "",
             msgVariant: "info",
             txhash: "",
-            stakeConfirmed: false,
+            showMintButton: true,
         }
     }
 
@@ -124,6 +125,9 @@ class MintPrize extends React.Component {
         const msg = <h2>Transaction Authorization</h2>
         const msgDetail = <p>Requesting HEX stakeStart transaction broadcast from MetaMask wallet.</p>
         this.setState({ msg, msgDetail, msgVariant })
+        gsap.timeline()
+            .to(this.showMintButton, { duration: 0.5, maxHeight: "0px" })
+            .set(this.showMintButton, { display: "none" })
 
         const { HEX } = this.parent
         const { account, hearts } = this.parent.state
@@ -293,6 +297,7 @@ class MintPrize extends React.Component {
             <Container className="p-3">
                     <Button className="button-pink" block
                         onClick={this.mintPrize}
+                        ref={r => this.mintButton = r}
                     >
                         <h1 className="m-0">MINT PRIZE</h1>
                         <h2 style={{ margin: 0, lineHeight: "1.4em" }}>
