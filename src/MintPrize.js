@@ -158,9 +158,9 @@ class MintPrize extends React.Component {
                     <h3 className="mt-3">Manage all your stakes at ...</h3>
                     <Button
                         variant="outline-primary"
-                        href="https://go.tshare.app/"
+                        href="https://go.hex.com/stake"
                     >
-                        <h1 className="m-0 mb-1 text-light">go.TShare.app</h1>
+                        <h1 className="m-0 mb-1 text-light">go.hex.com</h1>
                     </Button><br/>
                     <Badge className="text-muted text-uppercase text-bold small">
                         <p className="m-0">the full experience</p>
@@ -349,9 +349,9 @@ class MintPrize extends React.Component {
             </Badge><br/>
             <Button
                 variant="primary"
-                href="https://go.tshare.app/"
+                href="https://go.hex.com/stake"
             >
-                <h1 className="m-0 mb-1 text-light">go.TShare.app</h1>
+                <h1 className="m-0 mb-1 text-light">go.hex.com</h1>
             </Button><br/>
             <Badge className="text-muted text-uppercase text-bold small">
                 <p className="m-0">the full experience</p>
